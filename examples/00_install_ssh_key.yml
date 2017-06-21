@@ -1,0 +1,15 @@
+---
+- name: Add bastion key to hosts
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: install ssh key
+    # http://docs.ansible.com/ansible/authorized_key_module.html
+    authorized_key: 
+      user: vagrant
+      # http://docs.ansible.com/ansible/playbooks_lookups.html#intro-to-lookups-getting-file-contents
+      key: "{{ lookup('file', '/home/vagrant/.ssh/id_rsa.pub') }}"
+
+...
+
