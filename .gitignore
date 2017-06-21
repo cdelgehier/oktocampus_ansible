@@ -1,0 +1,8 @@
+# Vagrant stuff
+.vagrant
+
+# Ansible
+*.retry
+
+# vi
+*.swp
