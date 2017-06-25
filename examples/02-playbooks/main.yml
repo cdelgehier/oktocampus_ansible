@@ -1,0 +1,63 @@
+---
+- name : play 1
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  vars:
+    docroot: /var/www/html/
+    title: oktocampus
+    body: |
+      <h1>Hello all !</h1>
+      <p>Is there any pizza left ? :)</p>
+
+  tasks:
+    - name: install epel repo
+      tags: install
+      yum:
+        name: epel-release
+        state: present
+
+    - name: install apache httpd
+      tags: install
+      yum: 
+        name: httpd
+        state: present
+
+    - name: start and enable httpd
+      tags: config    
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: install packages in loop
+      tags: install
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - ca-certificates
+        - w3m
+
+    - name: templating of my awesome html file
+      tags: config
+      template:
+        src: index.html.j2
+        dest: "{{ docroot }}/index.html"
+        owner: apache
+        group: apache
+
+  roles:
+    - role: ntp
+      ntp_timezone: "Europe/Paris"
+      ntp_manage_config: true
+      ntp_area: "fr"
+      ntp_servers:
+          - "0.{{ ntp_area }}.pool.ntp.org iburst"
+          - "1.{{ ntp_area }}.pool.ntp.org iburst"
+          - "2.{{ ntp_area }}.pool.ntp.org iburst"
+          - "3.{{ ntp_area }}.pool.ntp.org iburst"
+      
+...
+
