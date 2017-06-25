@@ -23,6 +23,12 @@ vagrant@bastion $> ssh-keygen -t rsa -b 2048
 
 # Add target host key file to the known_hosts
 vagrant@bastion $> ssh-keyscan prod1 prod2 rec1 rec2 > ~/.ssh/known_hosts
+
+# Add your bastion key to targets
+vagrant@bastion $>  cd  ~/git/oktocampus/examples 
+vagrant@bastion $>  ansible-playbook 00_install_ssh_key.yml -k
+SSH password: vagrant
+
 ```
 
 ## Check installation
