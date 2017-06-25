@@ -30,6 +30,7 @@ set smartindent
 set showmatch " Match brackets
 "set number " Line Numbers
 syntax enable
+set paste
 
 " Search related
 set incsearch " Incremental search
