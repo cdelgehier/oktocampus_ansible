@@ -6,7 +6,7 @@ yum install --enablerepo=extras epel-release -y
 yum install -y python-pip gcc python-devel libffi-devel openssl-devel sshpass git docker vim
 /usr/bin/pip install --upgrade pip
 /usr/bin/pip install --upgrade setuptools
-/usr/bin/pip install ansible
+/usr/bin/pip install ansible ansible-lint
 
 
 # DOCKER
