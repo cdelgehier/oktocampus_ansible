@@ -1,0 +1,3 @@
+$> sudo setenforce 0
+$> DISTRIBUTION=centos VERSION=7 ./docker-test.sh 
+$> DISTRIBUTION=ubuntu VERSION=16.04 ./docker-test.sh 
