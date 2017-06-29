@@ -1,3 +1,11 @@
 $> sudo setenforce 0
 $> DISTRIBUTION=centos VERSION=7 ./docker-test.sh 
 $> DISTRIBUTION=ubuntu VERSION=16.04 ./docker-test.sh 
+
+$> curl  ftp://172.17.0.2/README
+anon_root
+$> curl -u alice:alice  ftp://172.17.0.2/README
+local_root
+
+$> SUT_IP=172.17.0.2 ./docker-tests/functional-tests.sh
+
