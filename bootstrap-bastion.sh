@@ -3,7 +3,7 @@
 # Ansible installation
 yum install --enablerepo=extras epel-release -y
 
-yum install -y python-pip gcc python-devel libffi-devel openssl-devel sshpass git docker vim
+yum install -y python-pip gcc python-devel libffi-devel openssl-devel sshpass git docker vim bats
 /usr/bin/pip install --upgrade pip
 /usr/bin/pip install --upgrade setuptools
 /usr/bin/pip install ansible ansible-lint pre-commit
